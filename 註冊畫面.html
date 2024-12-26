@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>註冊頁面</title>
+    <style>
+        /* 整合的 CSS */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+        }
+
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .register-card {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 10px 0 0;
+        }
+
+        .register-form label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .register-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .terms {
+            display: flex;
+            align-items: center; 
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .terms input {
+            margin-right: 10px; /* 给复选框和文本之间加一些间距 */
+        }
+
+        .register-button {
+            width: 100%;
+            background: #5673eb;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .register-button:hover {
+            background: #3b5fd0;
+        }
+
+        .divider {
+            text-align: center;
+            font-size: 14px;
+            margin: 20px 0;
+            color: #aaa;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .social-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .social-button:hover {
+            background: #bbb;
+        }
+
+        .social-button.apple {
+            background: #000;
+            color: #fff;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #5673eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <button class="close-button">&times;</button>
+            <div class="logo">
+                <img src="./img/LOGO-M.png" alt="Logo">
+                <h1>LanceDom</h1>
+            </div>
+            <form class="register-form" id="register-form" onsubmit="return validatePassword()">
+                <label for="email">信箱 (Email)</label>
+                <input type="email" id="email" placeholder="輸入您的email" required>
+
+                <label for="username">用戶名稱 (Username)</label>
+                <input type="text" id="username" placeholder="輸入您的用戶名稱" required>
+
+                <label for="password">密碼 (Password)</label>
+                <input type="password" id="password" name="password" placeholder="********"
+                    pattern="(?=.*[A-Z])(?=.*[0-9]).{8,}" title="密碼必須至少包含一個大寫字母、一個數字，且長度為8個字元以上" required>
+
+                <label for="confirm-password">確認密碼 (Confirm Password)</label>
+                <input type="password" id="confirm-password" placeholder="********" required>
+
+                <div class="terms">
+                    <label for="agree">
+                    <input type="checkbox" id="agree" style="width: auto;" required>
+                    我同意條款和隱私
+                </label>
+                </div>
+
+                <button type="submit" class="register-button">註冊</button>
+            </form>
+
+            <div class="divider">或</div>
+            <div class="social-login">
+                <a href="#" class="social-btn">
+                    <img src="./img/LINE.png" style="width: 50px;" alt="LINE">
+                </a>    
+                <a href="#" class="social-btn">
+                    <img src="./img/Google.png" style="width: 50px;" alt="Google">
+                </a>
+            </div>
+            <div class="footer">
+                <span>已經擁有帳號了？ <a href="#">登入</a></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("密碼和確認密碼不相符！");
+                return false; // 阻止表單提交
+            }
+            return true; // 密碼相符，允許表單提交
+        }
+    </script>
+</body>
+
+</html>
