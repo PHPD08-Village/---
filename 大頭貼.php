@@ -11,7 +11,7 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
 }
 
-$user_id = 39;  // 假设你要查找 ID 为 1 的用户
+$user_id = 39;  
 
 $sql = "SELECT avatar FROM users WHERE id = :id";
 $stmt = $pdo->prepare($sql);
@@ -21,9 +21,9 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user) {
-    $avatarUrl =   $user['avatar'];  // 如果存储的是文件名
+    $avatarUrl =   $user['avatar'];  
 } else {
-    $avatarUrl = 'images/default-avatar.jpg';  // 如果用户没有头像，显示默认头像
+    $avatarUrl = 'images/default-avatar.jpg';  
 }
 ?>
 
